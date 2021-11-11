@@ -18,12 +18,22 @@ const run = async() => {
         await client.connect();
         const database = client.db('car-deal');
         const carsCollection = database.collection('cars')
+        const orderCollection = database.collection('myOrder')
 
         // GET API
         app.get('/cars', async (req, res) => {
             const cursor = carsCollection.find({})
             const cars = await cursor.toArray()
             res.send(cars)
+        })
+
+        // POST API
+
+        app.post('/orders', async(req, res) => {
+            const orderData = req.body;
+            const result = await orderCollection.insertOne(orderData)
+            console.log(result);
+            res.json(result)
         })
 
     }
