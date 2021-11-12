@@ -29,6 +29,15 @@ const run = async() => {
 
         // GET ORDER API
         app.get('/orders', async (req, res) => {
+            const email = req.query;
+            const query = {email:email}
+            const cursor = orderCollection.find(query)
+            const orders = await cursor.toArray()
+            res.send(orders)
+        })
+        // GET MANAGE ORDER API
+        app.get('/manage-orders', async (req, res) => {
+            
             const cursor = orderCollection.find({})
             const orders = await cursor.toArray()
             res.send(orders)
