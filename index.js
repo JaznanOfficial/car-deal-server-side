@@ -19,6 +19,7 @@ const run = async() => {
         const database = client.db('car-deal');
         const carsCollection = database.collection('cars')
         const orderCollection = database.collection('myOrder')
+        const reviewCollection = database.collection('reviews')
 
         // GET API
         app.get('/cars', async (req, res) => {
@@ -48,6 +49,14 @@ const run = async() => {
         app.post('/orders', async(req, res) => {
             const orderData = req.body;
             const result = await orderCollection.insertOne(orderData)
+            console.log(result);
+            res.json(result)
+        })
+        // POST REVIEW API
+
+        app.post('/review', async(req, res) => {
+            const reviewData = req.body;
+            const result = await reviewCollection.insertOne(reviewData)
             console.log(result);
             res.json(result)
         })
