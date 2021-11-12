@@ -20,6 +20,7 @@ const run = async() => {
         const carsCollection = database.collection('cars')
         const orderCollection = database.collection('myOrder')
         const reviewCollection = database.collection('reviews')
+        const userCollection = database.collection('users')
 
         // GET API
         app.get('/cars', async (req, res) => {
@@ -56,6 +57,14 @@ const run = async() => {
         app.post('/orders', async(req, res) => {
             const orderData = req.body;
             const result = await orderCollection.insertOne(orderData)
+            console.log(result);
+            res.json(result)
+        })
+        // POST API
+
+        app.post('/users', async(req, res) => {
+            const userData = req.body;
+            const result = await userCollection.insertOne(userData)
             console.log(result);
             res.json(result)
         })
