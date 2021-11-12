@@ -60,7 +60,15 @@ const run = async() => {
             console.log(result);
             res.json(result)
         })
-        // POST API
+        // POST Cars API
+
+        app.post('/addCars', async(req, res) => {
+            const addCar = req.body;
+            const result = await carsCollection.insertOne(addCar)
+            console.log(result);
+            res.json(result)
+        })
+        // POST USER API
 
         app.post('/users', async(req, res) => {
             const userData = req.body;
