@@ -43,6 +43,13 @@ const run = async() => {
             const orders = await cursor.toArray()
             res.send(orders)
         })
+        // GET REVIEW API
+        app.get('/review', async (req, res) => {
+            
+            const cursor = reviewCollection.find({})
+            const reviews = await cursor.toArray()
+            res.send(reviews)
+        })
 
         // POST API
 
