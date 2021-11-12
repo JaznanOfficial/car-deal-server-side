@@ -27,6 +27,13 @@ const run = async() => {
             res.send(cars)
         })
 
+        // GET ORDER API
+        app.get('/orders', async (req, res) => {
+            const cursor = orderCollection.find({})
+            const orders = await cursor.toArray()
+            res.send(orders)
+        })
+
         // POST API
 
         app.post('/orders', async(req, res) => {
