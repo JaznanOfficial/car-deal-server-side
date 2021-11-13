@@ -44,6 +44,17 @@ const run = async() => {
             const orders = await cursor.toArray()
             res.send(orders)
         })
+        
+        // GET MANAGE USER API
+        app.get('/manage-users', async (req, res) => {
+            
+            const cursor = userCollection.find({})
+            const users = await cursor.toArray()
+            res.send(users)
+        })
+
+
+
         // GET REVIEW API
         app.get('/review', async (req, res) => {
             
